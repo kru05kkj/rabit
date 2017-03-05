@@ -1,4 +1,4 @@
-package example;
+package com.algorithm.tryhelloworld;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,9 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.lang3.ArrayUtils;
-
 public class Example {
-
 	public String getMinMaxString(String sNumbers) {
 		// TODO Auto-generated method stub
 		String[] sNumberArray;
@@ -205,8 +203,55 @@ public class Example {
 		
 		return answer;
 	}
-	
-	
 
-	
+	public int jumpCase(int num) {
+		// TODO Auto-generated method stub
+		
+		if ( num<=2 ){
+			return num;
+		} else {
+			return jumpCase(num-1)+jumpCase(num-2);
+		}	
+	}
+
+	public int numberOfPrime(int num) {
+		int[] array = new int[num+1];
+		int result =0;
+		// TODO Auto-generated method stub
+		
+		for(int i=0;i<=num;i++){
+			array[i]= i;
+		}
+		
+		for(int i =2 ; i <=num; i++){
+			if(array[i]!=0){
+				for(int j= i+i; j<=num; j+=i){
+					array[j]=0;
+				}
+				result++;
+			}
+		}
+		
+		return result;
+	}
+
+	public int getCoreNumber(int num, int[] core) {
+		// TODO Auto-generated method stub
+		int coreCount = core.length;
+		int coreNumber =0;
+		int[] param = new int[core.length];
+		
+		for(int i = 0;i < num;i++){
+			for(int j =0; j < coreCount; j++){
+				if( param[j] > 0){
+					i++;
+					core[j]--;
+					coreNumber = j;
+				}
+			}			
+		}
+		return coreNumber;
+	}
+
+
 }
