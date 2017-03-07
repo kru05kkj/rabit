@@ -310,4 +310,98 @@ public class CodilityTest {
 		assertEquals(4, codi.solutionFix(955));
 		assertEquals(4, codi.solutionFix(954));
 	}
+		@Test
+	public void  testChange124(){
+		Example exam = new Example();
+		assertEquals("1", exam.change124(1));
+		assertEquals("2", exam.change124(2));
+		assertEquals("4", exam.change124(3));
+		assertEquals("21", exam.change124(7));
+		assertEquals("41", exam.change124(10));
+		//assertEquals("44", exam.change124(27));
+		//assertEquals("401", exam.change124(28));
+		//assertEquals("441", exam.change124(37));
+		//assertEquals("144444112442444214", exam.change124(1097198565 ));
+
+	}
+	
+	@Test
+	public void testFrogJump(){
+		Example exam = new Example();
+		assertEquals(3, exam.frogJump(10, 85, 30));
+		assertEquals(300000000, exam.frogJump(10, 900000010, 3));
+	}
+	@Test
+	public void testFrogJump2(){
+		Example exam = new Example();
+		assertEquals(3, exam.frogJump2(10, 85, 30));
+		assertEquals(300000000, exam.frogJump2(10, 900000010, 3));
+	}
+	
+	@Test
+	public void testPermMissingElem(){
+		Example exam = new Example();
+		int[] input ={2,3,1,5};
+		assertEquals(4, exam.permMissingElem(input));
+	}
+	
+	@Test
+	public void testTapeEquilibrium(){
+		Example exam = new Example();
+		int[] input ={3,1,2,4,3};
+		assertEquals(1, exam.tapeEquilibrium(input));
+		int[] input2 ={-1000, 1000};
+		assertEquals(2000, exam.tapeEquilibrium(input2));
+		int[] input3 ={-1000, -1};
+		assertEquals(999, exam.tapeEquilibrium(input3));
+		int[] input4 ={1,1,1,1,1,1,1,1,1,1,1};
+		assertEquals(1, exam.tapeEquilibrium(input4));
+		int[] input5 ={1,1,1,1,1,1,1,1,1,1};
+		assertEquals(0, exam.tapeEquilibrium(input5));
+		
+		int[] input6 ={-3,-1,-2,-4,-3};
+		assertEquals(1, exam.tapeEquilibrium(input6));
+		int[] input7 ={1,1,1};
+		assertEquals(1, exam.tapeEquilibrium(input7));
+		
+	}
+	
+	@Test
+	public void testBinarygap(){
+		Example exam = new Example();
+		assertEquals(1, exam.binarygap(20));
+		assertEquals(2, exam.binarygap(9));
+		assertEquals(4, exam.binarygap(529));
+		assertEquals(0, exam.binarygap(15));
+		assertEquals(0, exam.binarygap(2147483647));
+		assertEquals(0, exam.binarygap(1024));
+	}
+	
+	@Test
+	public void testOddOccurrencesInArray(){
+		Example exam = new Example();
+		int[] input0 ={9,3,9,3,9,7,9};
+		assertEquals(7, exam.oddOccurrencesInArray(input0));
+		int[] input1 ={9,3,9,3,9,7,9,3,9,3,9,3,9,3,9,3,9,3,9,3,9,3,9,3,9,3,9,3,9,3,9,3,9,3,9,3,9,3,9,3,9,3,9,3,9,3,9,3,9,3,9};
+		assertEquals(7, exam.oddOccurrencesInArray(input1));
+		int[] input2 ={9,7,3,9,3,9,9};
+		assertEquals(7, exam.oddOccurrencesInArray(input2));
+	}
+	
+	@Test
+	public void testCyclicRotation() {
+		Example exam = new Example();
+		assertArrayEquals( new int[] {3, 8, 9, 7, 6}, exam.cyclicRotation(new int[] {3, 8, 9, 7, 6}, 5));
+		assertArrayEquals( new int[] {9, 7, 6, 3, 8}, exam.cyclicRotation(new int[] {3, 8, 9, 7, 6}, 3));
+	}
+	
+	@Test
+	public void testMissingInteger(){
+		Example exam = new Example();
+		assertEquals(5, exam.missingInteger(new int[] {1,3,6,4,1,2}));
+		assertEquals(-2147483647, exam.missingInteger(new int[] {-2147483648,3,6,4,1,2}));
+		assertEquals(0, exam.missingInteger(new int[] {1,1,1,1,1,1,1,1,1}));
+		assertEquals(-2147483647, exam.missingInteger(new int[] {-2147483648,2147483647}));
+		
+	}
 }
