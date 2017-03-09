@@ -126,34 +126,61 @@ public class Codility {
         return -1;
     }
 
-	    int solutionFix(int n) {
+    int solutionFix(int n) {
         int[] d = new int[30];
-        int l = 0;
+        int len = 0;
         int p;
         while (n > 0) {
-            d[l] = n % 2;
+            d[len] = n % 2;
             n /= 2;
-            //System.out.print(d[l]);
-            l++;
+          System.out.print(d[len]);
+            len++;
         }
-        System.out.println("");
-       // System.out.println(3/2);
-        for (p = 0; p < (1 + l)/2; ++p) {
-            int i;
-            boolean ok = true;
-            //System.out.println("p is " +p+", l is "+l +" :");
-            for (i = 0; i < l - p; ++i) {
-                if (d[i] != d[i + p]) {
-                    ok = false;
-                    break;
-                }
-            }
-            if (ok) {
-                return p;
-            }
+        System.out.println(" len : "+len );
+        for ( int i =len/2; i > 1; i--){
+        	System.out.println("========="+i+"===========" );
+
+        	for (int j=0; j<=(len-2*i);j++){
+            	if(this.hasPattern(ArrayUtils.subarray(d, j+i, len),  ArrayUtils.subarray(d, j, (j+i)))) {
+            		return i;
+            	}
+        	}
+        	        	
         }
-        return -1;
+
+        return 1;
     }
+    
+    private void printIntArray(int[] a){
+    	for(int i=0;i<a.length;i++) System.out.print(a[i]);
+    	//System.out.println();
+    }
+    
+    private boolean hasPattern(int[] target, int[] pattern) {
+		// TODO Auto-generated method stub
+    	int lenOfTarget = target.length;
+    	int lenOfPattern = pattern.length;
+    	//boolean isMatch = false;
+    	
+    	System.out.println("========= hasPattern ===========" );
+    	printIntArray(pattern);System.out.print(" + " );printIntArray(target);System.out.println();
+    	System.out.println("================================" );
+    	
+    	for(int i =0; i < lenOfTarget; i++ ){
+    		for(int j=0; j < lenOfPattern && (lenOfTarget-i) >=lenOfPattern ;j++){
+    			System.out.print("Target["+(i+j)+"]"+":Pattern["+j+"]="+"["+target[j+i]+"]"+"["+pattern[j]+"]");
+    			if(target[i+j]==pattern[j]){
+    				System.out.println("==> Match");
+    				if (j== (lenOfPattern-1)) return true;
+    			} else {
+    				System.out.println("==> False");
+    				break;
+    			}
+    		}
+    	}
+    	
+		return false;
+	}
     
     private boolean compareArray(int[] pattern, int[] compareA){
     	int pl=pattern.length;
