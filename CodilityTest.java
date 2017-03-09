@@ -404,4 +404,18 @@ public class CodilityTest {
 		assertEquals(-2147483647, exam.missingInteger(new int[] {-2147483648,2147483647}));
 		
 	}
+	@Test
+	public void testSolutionFix(){
+		Example exam = new Example();
+		assertEquals(4, exam.solutionFix(955));
+		assertEquals(1, exam.solutionFix(11));
+
+		assertEquals(4, exam.solutionFix(954));
+		assertEquals(4, exam.solutionFix(24637529));
+	}
+	@Test
+	public void testIntReverse(){
+		Example exam = new Example();
+		assertEquals(321, exam.intReverse(123));
+	}
 }
