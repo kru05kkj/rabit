@@ -426,6 +426,7 @@ public class Codility {
 	/*
 	 * O(N)
 	 *  result https://codility.com/demo/results/trainingNX7M8C-XFN/
+	 * https://codility.com/demo/results/trainingE5YCMK-JDW/
 	 */
 	public int missingInteger(int[] A) {
 		// TODO Auto-generated method stub
