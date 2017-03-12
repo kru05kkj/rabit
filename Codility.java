@@ -422,28 +422,45 @@ public class Codility {
 		return B;
 	}
 
+
+	/*
+	 * O(N)
+	 *  result https://codility.com/demo/results/trainingNX7M8C-XFN/
+	 */
 	public int missingInteger(int[] A) {
 		// TODO Auto-generated method stub
 		int alen = A.length;
-		int min = 0;
-		
-		Arrays.sort(A);
-		System.out.println("============================");
-		System.out.println("alen : " +alen);
-		System.out.println("alen : " +(1-(-1)));
-		System.out.println("============================");
-		
-		min = A[0];
-		for(int i=1; i < alen ; i++){
-			System.out.println("A : min = " +A[i] +" - "+min +" = "+(long)(A[i]-min));
-			if(Math.abs(A[i]-min)>1){
-				System.out.println("return : " +(min+1));
-				return min+1;
+		int[] positives = new int[100000];
+		int missing =0;
+		boolean isFirst = true;
+		int countOfPositives =0;
+				
+		for(int i=0; i < alen ; i++){
+			if(A[i] > 0 ) {
+				positives[A[i]]++;
+				countOfPositives++;
 			}
-			
-			min = A[i];
 		}
 		
+		for(int j=1 ; j < 100000; j++){
+			if(positives[j]>0){
+				if(isFirst) {
+					isFirst =false;
+				}
+				
+				countOfPositives-= positives[j];
+				missing = j;
+				
+				if (!isFirst && countOfPositives==0) {
+					return missing+1;
+				}
+			} else {
+				if (!isFirst && countOfPositives>0) {
+					return missing+1;
+				}
+			}
+
+		}
 
 		return 0;
 	}
