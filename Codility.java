@@ -465,4 +465,90 @@ public class Codility {
 
 		return 0;
 	}
+	//https://codility.com/demo/results/training2QRY9F-2QJ/
+	public int distinct(int[] A) {
+		// TODO Auto-generated method stub
+		int result =0;
+		int temp =-1000000;
+		mergesort(A);
+		
+		
+		for(int i = 0; i <A.length ; i++){
+			if(temp!=A[i]){
+				result++;
+				temp=A[i];
+			}
+		}
+		
+		this.printIntArray(A);
+		return result;
+	}
+
+	private int[] mergesort(int[] A) {
+		// TODO Auto-generated method stub
+		int alen = A.length;
+		
+		
+		System.out.println("============== Sort =================");
+		this.printIntArray(A);
+		if(alen<=1) return A;
+		
+		//int[] first = ArrayUtils.subarray(A, 0, alen/2);
+		//int[] second = ArrayUtils.subarray(A, alen/2, alen+1);
+		int[] first =Arrays.copyOfRange(A, 0, alen/2);
+		int[] second = Arrays.copyOfRange(A, alen/2, alen);
+		System.out.println("++++++++++++++++++++++++++++++++++");
+		this.printIntArray(first);
+		this.printIntArray(second);
+		
+		mergesort(first);
+		mergesort(second);
+		merge(first, second, A);
+		
+		return A;
+	}
+
+	private void merge(int[] first, int[] second, int[] A) {
+		// TODO Auto-generated method stub
+        int firstLen = first.length;
+        // Next element to consider in the second array
+        int secondLen = second.length;
+        int alen = A.length;
+        
+        // Next open position in the result
+        int positionOfFirst = 0;
+        int positionOfSecond = 0;
+        int positionOfA=0;
+        
+		System.out.println("============== Merge =================");
+		this.printIntArray(first);
+		this.printIntArray(second);
+        // As long as neither iFirst nor iSecond is past the end, move the
+        // smaller element into the result.
+		
+        while (positionOfFirst < firstLen && positionOfSecond < secondLen) {
+        	if(first[positionOfFirst] < second[positionOfSecond]) {
+        		A[positionOfA]=first[positionOfFirst] ;
+        		positionOfFirst++;
+        	} else {
+        		A[positionOfA]=second[positionOfSecond] ;
+        		positionOfSecond++;
+        	}
+        	positionOfA++;
+        }
+        
+        while(positionOfFirst < firstLen){
+        	A[positionOfA]=first[positionOfFirst] ;
+    		positionOfFirst++;
+    		positionOfA++;
+        }
+        while(positionOfSecond < secondLen){
+        	A[positionOfA]=second[positionOfSecond] ;
+    		positionOfSecond++;
+    		positionOfA++;
+        }
+        
+        
+        this.printIntArray(A);
+	}
 }
