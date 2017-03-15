@@ -418,4 +418,28 @@ public class CodilityTest {
 		Example exam = new Example();
 		assertEquals(321, exam.intReverse(123));
 	}
+		// count of distinct number
+	// time O(N*logN) space O(N)
+	@Test
+	public void testDistinct(){
+		Example exam = new Example();
+		assertEquals(3, exam.distinct(new int[]{2,1,1,2,3,1}));
+	}
+	
+
+	@Test
+	public void testPermCheck(){
+		Example exam = new Example();
+		assertEquals(1, exam.permCheck(new int[]{4,1,3,2}));
+		assertEquals(0, exam.permCheck(new int[]{4,1,3}));
+		assertEquals(0, exam.permCheck(new int[]{4,1}));
+		assertEquals(0, exam.permCheck(new int[]{4,7}));
+		assertEquals(0, exam.permCheck(new int[]{10000000,10000001}));
+		assertEquals(0, exam.permCheck(new int[]{10000000,10000000}));
+		assertEquals(1, exam.permCheck(new int[]{1}));
+		assertEquals(0, exam.permCheck(new int[]{2,2}));
+		assertEquals(0, exam.permCheck(new int[]{2,3}));
+		assertEquals(0, exam.permCheck(new int[]{1000000000}));
+		
+	}
 }
