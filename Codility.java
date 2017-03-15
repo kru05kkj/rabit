@@ -551,4 +551,86 @@ public class Codility {
         
         this.printIntArray(A);
 	}
+	
+		//https://codility.com/demo/results/trainingST838W-6TK/
+	public int permCheckFail(int[] A) {
+		// TODO Auto-generated method stub
+		int alen = A.length;
+		int min = 1000000000;
+		int max = 0;
+		int lenOfcheck=0;
+		
+		System.out.println("============== permCheck =================");
+		this.printIntArray(A);
+		
+		for(int i=0; i<alen;i++){
+			if(A[i]<min) min = A[i];
+			if(A[i]>max) max = A[i];
+		}
+		
+		lenOfcheck = max - min +1;
+		
+		System.out.println("====  length : max : min ====");
+		System.out.println(lenOfcheck+" : "+ max +" : " + min);
+				
+		boolean[] check = new boolean[lenOfcheck];
+		for(int j=0; j <alen; j++){
+			check[A[j]-min]=true;
+		}
+		
+		for(int k=0; k < lenOfcheck; k++){
+			if(!check[k]) return 0;
+		}
+		
+		return 1;
+	}
+	//https://codility.com/demo/results/trainingHT6H7H-M4A/
+	public int permCheckFail2(int[] A) {
+		// TODO Auto-generated method stub
+		int alen = A.length;
+		int min = 1000000000;
+		int max = 0;
+		int lenOfcheck=0;
+		
+		System.out.println("============== permCheck =================");
+		this.printIntArray(A);
+		
+		for(int i=0; i<alen;i++){
+			if(A[i]<min) min = A[i];
+			if(A[i]>max) max = A[i];
+		}
+		
+		lenOfcheck = max - min +1;
+		
+		System.out.println("====  length : max : min ====");
+		System.out.println(lenOfcheck+" : "+ max +" : " + min);
+		
+		if(lenOfcheck!=alen) return 0;
+				
+		boolean[] check = new boolean[lenOfcheck];
+		for(int j=0; j <alen; j++){
+			check[A[j]-min]=true;
+		}
+		
+		for(int k=0; k < lenOfcheck; k++){
+			if(!check[k]) return 0;
+		}
+		
+		return 1;
+	}
+	
+	//Permcheck 100% java
+	//https://codility.com/demo/results/training4KAHVU-6ZS/
+	public int permCheck(int[] A) {
+		// TODO Auto-generated method stub
+		int alen = A.length;
+		boolean[] check = new boolean[alen+1];
+				
+		for(int i=0; i <alen; i++){
+			if(A[i]> alen || check[A[i]]) return 0;
+			check[A[i]]=true;
+		}
+		
+		return 1;
+	}
 }
