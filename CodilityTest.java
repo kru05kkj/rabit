@@ -442,4 +442,23 @@ public class CodilityTest {
 		assertEquals(0, exam.permCheck(new int[]{1000000000}));
 		
 	}
+
+	@Test
+	public void testCountDiv(){
+		Example exam = new Example();
+		assertEquals(3, exam.countDiv(6, 11, 2));
+		assertEquals(1, exam.countDiv(10, 20, 9));
+		assertEquals(0, exam.countDiv(10, 20, 21));
+		assertEquals(1, exam.countDiv(10, 10, 10));
+		assertEquals(1, exam.countDiv(0, 0, 10)); // minimal
+		assertEquals(200000001, exam.countDiv(0, 2000000000, 10));
+		assertEquals(2, exam.countDiv(0, 2000000000, 2000000000)); // big_values3
+		assertEquals(2000000001, exam.countDiv(0, 2000000000, 1));
+	}
+	
+	@Test
+	public void testFrogRiverOne(){
+		Example exam = new Example();
+		assertEquals(6, exam.frogRiverOne(5, new int[]{1,3,1, 4,2,3,5,4}));
+	}
 }
