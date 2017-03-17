@@ -465,6 +465,30 @@ public class Codility {
 
 		return 0;
 	}
+	public int missingInteger(int[] A) {
+		int alen = A.length;
+		int max =1;
+		
+		for(int i =0; i < alen; i++){
+			if(A[i]> max) max=A[i];
+		}
+		System.out.println(" max is " +max);
+		
+		if(max<=1) return 1;
+		
+		boolean[] check = new boolean[max+1];
+		
+		for(int j =0; j< alen;j++){
+			if(A[j]>0 ) check[A[j]]=true; 
+		}
+		
+		for(int k=1; k < max+1; k++){
+			if(!check[k]) return k;
+		}
+		
+		return 1;
+	}
+
 	//https://codility.com/demo/results/training2QRY9F-2QJ/
 	public int distinct(int[] A) {
 		// TODO Auto-generated method stub
@@ -632,5 +656,53 @@ public class Codility {
 		}
 		
 		return 1;
+	}
+	// 62% https://codility.com/demo/results/trainingCEN7QT-FNP/
+	// minimal A = B in {0,1}, K = 11 => expected 1 got 0
+	// extreme_endpoints  : verify handling of range endpoints, multiple runs : got 7 expected 8
+	// big_values3 : A = 0, B = MAXINT, K in {1,MAXINT} : got 1 expected 2
+	public int countDivFail(int A, int B, int K) {
+		// TODO Auto-generated method stub
+		
+		int max = B/K;
+		int min = (A-1)/K;
+		
+		return max -min;
+	}
+	
+	// 100% https://codility.com/demo/results/trainingWU89MR-5D9/
+	public int countDiv(int A, int B, int K) {
+		// TODO Auto-generated method stub
+		
+		if(K==1) return B-A+1; // for big values 0, 20000000000, 1
+		
+		int max = B/K;
+		int min = (A-1)/K;
+		
+		if( A==0 ) {
+			return max - min+1;
+		} else {
+			return max - min;
+		}
+		
+	}
+
+	// 100% https://codility.com/demo/results/training8TF9WK-9JW/
+	public int frogRiverOne(int X, int[] A) {
+		// TODO Auto-generated method stub
+		int alen = A.length;
+		boolean[] check = new boolean[X+1];
+		int count =0;
+		
+		
+		for(int i =0; i < alen; i++){
+			if(A[i]<= X && !check[A[i]]){
+				check[A[i]]=true;
+				count++;
+			}
+			
+			if(count == X) return i;
+		}
+		return -1;
 	}
 }
